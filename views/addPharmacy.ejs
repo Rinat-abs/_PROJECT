@@ -1,0 +1,53 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+<div class="container">
+    <a class="btn_left" href="/plan/pharmacies"
+    style="width: 70px; text-align: center; margin-left: 20px;  color: #fff;">
+    Назад
+    </a>
+<form action="/plan/add_pharmacy" method="post" class="ui-form_standart ui-form_standart_addAp">
+
+    <h3>Добавить аптеку</h3>
+    <div class="form-row_standart">
+    <input type="text" id="full_name" name="full_name" required autocomplete="off" value="<%=data.full_name%>"><label for="full_name">Полное наименое аптеки</label>
+    </div>
+    
+    <div class="form-row_standart">
+    
+    <input class="input_no_arrows" type="number" name="num" id="num" required autocomplete="off"  value="<%=data.num%>"><label for="num">Номер аптеки</label>
+    </div>
+    <p><input type="submit" value="Добавить"></p>
+</form>
+</div>
+<%
+if( success.length > 0)
+{
+    %>
+        <div class="small_fadeout_block  animate__animated animate__backInDown">
+            <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="14" alt=""></button>
+            <h3>Аптека доабвлена</h3>
+            <p><%-success%> </p>
+        </div>
+        <script src="/js/smallWindow.js"></script>  
+    <%
+}
+%> 
+ 
+<%
+if( error.length > 0)
+{
+    %>
+        <div class="small_fadeout_block small_fadeout_block_error animate__animated animate__backInDown">
+            <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="14" alt=""></button>
+            <h3>Ошибка</h3>
+            <p><%-error%> </p>
+        </div>
+        <script src="/js/smallWindow.js"></script>  
+    <%
+}
+%> 
+
+
+
+<%- include('./blocks/footer.ejs')%>

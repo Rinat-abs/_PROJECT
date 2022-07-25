@@ -1,0 +1,126 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+ 
+
+    <div class="container">
+        <a class="btn_left" href="/plan" style="width: 70px; text-align: center; margin-left: 20px;  color: #fff;">
+            Назад
+        </a>
+      
+        <form action="/plan/bonus_part_one_update" method="post">
+            <button class="btn_left"  style="width: 100px; text-align: center; margin-left: 20px;  color: #fff;" title="Обновить данные Бонусы 1-ая часть">
+                Обновить
+            </button>
+        </form>
+        <a class="btn_left" href="/plan/download/bonusPartOne" style="width: 70px; text-align: center; margin-left: 20px;  color: #fff;" title="Скачать в Excel формате" download >
+            Скачать
+        </a>
+        
+        <%if(!items.length) {%>
+            <div class="error">
+                Здесь пока пусто
+            </div>
+        <%} else {%>
+            <input type="text" class="input__search" placeholder="Поиск " style="margin-left: 20px;">
+          
+            <div class="confirm_data">
+                Расчет бонусов
+            </div>
+            
+
+            <div  style="max-height: 550px; overflow: auto; margin-top: 25px;">
+                
+                <table class="table_dark" tabindex="0">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Аптеки</th>
+                            <th>План</th>
+                            <th>Продажа</th>
+                            <th>%</th>
+                            <th>За достижение</th>
+                            <th>Сумма перевыполнения</th>
+                            <th>План по Сангигиене</th>
+                            <th>Факт продаж по Сангигиене</th>
+                            <th>%</th>
+                            <th>За достижение по Сангигиене</th>
+                            <th>МАРК.  ДОГОВОР (лс и бад + ФИТО)</th>
+                            <th> ЛС и БАД </th>
+                            <th>МАРК.  ДОГОВОР </th>
+                            <th>Аскорбинка и тассайт</th>
+                            <th>Бонусы за МЕРРИЕС+ ФРАНЦИЯ+ Colgate</th>
+                            <th>ФИТО (МАРК.  ДОГОВОР СПЕЦИАЛИС ТАМ)</th>
+                            <th>ФИТО (МАРК.  ДОГОВОР СПЕЦИАЛИС ТАМ)</th>
+                            <th>Общее</th>
+                            <th>Фармацевт</th>
+                            <th>Специалист</th>
+                            <th>Итого фармацевту</th>
+                            <th>Итого специалисту</th>
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <%items.forEach((item, i) => {%>
+                            <tr class="search__item" tabindex="0">
+                                <td><%=item.category%></td>
+                                <td><%=item.pharmacy%></td>
+                                <td><%=item.plan%></td>
+                                <td><%=item.fact%></td>
+                                <td><%=item.percentDone%></td> 
+                                <td><%=item.bonus%></td>
+                                <td><%=item.overfulfillment%></td>
+                                <td><%=item.hygienePlan%></td>
+                                <td><%=item.hygieneFact%></td>
+                                <td><%=item.hygienePercent%></td>
+                                <td><%=item.hygieneOverfullfilment%></td>
+                                <td><%=item.markDogovorLsBadAndFito%></td>
+                                <td><%=item.lsBad%></td>
+                                <td><%=item.markDogovor%></td>
+                                <td><%=item.askorbinkaBonus%></td>
+                                <td><%=item.commonProvidersSells%></td>
+                                <td><%=item.fito%></td>
+                                <td><%=item.fitoFormula%></td>
+                                <td><%=item.pharmacyStaffCount%></td>
+                                <td><%=item.pharmacistCount%></td>
+                                <td><%=item.pharmacistSpecialistCount%></td>
+                                <td><%=item.bonusPharmaciests%></td>
+                                <td><%=item.bonusSpecialists%></td>
+                                
+                            
+                            </tr>
+                        <%})%>
+                    </tbody>
+        
+                   
+                    
+                </table>
+            </div>
+        <%}%>
+        
+
+               
+
+        
+    </div>
+
+    <%
+    if( error.length > 0)
+    {
+        %>
+        
+            <div class="small_fadeout_block small_fadeout_block_error animate__animated animate__backInDown">
+                <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="14" alt=""></button>
+                <h3>Ошибка</h3>
+                <p><%-error%> </p>
+            </div>
+            <script src="/js/smallWindow.js"></script>  
+        <%
+    }
+    %> 
+    
+
+
+    <script src="/js/search.js"></script>
+
+<%- include('./blocks/footer.ejs')%>

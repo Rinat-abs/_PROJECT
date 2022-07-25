@@ -1,0 +1,22 @@
+<header class="header">
+    <div class="container " style="background-color: rgba(32, 33, 36, 1); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+
+        <ul class="header__menu">
+            <li class="header__menu__item <%if(typeof isHome !== 'undefined') {%>header__menu__item_active<%}%>"><a href="/">Главная</a></li>
+            
+            <%if(isAuth) {%>
+                <%if(user.rights === 'admin') {%>
+                    <li class="header__menu__item <%if(typeof isAdmin !== 'undefined') {%>header__menu__item_active<%}%>"><a href="/admin">Управление</a></li>   
+                <%}%>
+                <%if(user.rights === 'main') {%>
+                    <li class="header__menu__item <%if(typeof isMain !== 'undefined') {%>header__menu__item_active<%}%>"><a href="/plan">Управление</a></li>   
+                <%}%>
+                <%if(user.rights === 'mas') {%>
+                    <li class="header__menu__item <%if(typeof isMas !== 'undefined') {%>header__menu__item_active<%}%>"><a href="/study">Управление</a></li>   
+                <%}%>
+                <li class="header__menu__item "><a href="/logout">Выйти</a></li>
+            <%}%>
+        </ul>
+        
+    </div>
+</header>

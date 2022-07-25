@@ -1,0 +1,21 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+
+<div class="container">
+    <secction class="study">
+        <div class="study__items">
+        <%
+            categories.forEach(category => {
+        %>
+                
+        <a class="study__item" href="/study/<%=category.id%>"><%=category.month_name%></a>
+
+        <%
+            });
+        %>
+        </div>
+    </secction>
+</div>
+
+<%- include('./blocks/footer.ejs')%>

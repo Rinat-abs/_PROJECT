@@ -1,0 +1,48 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+
+    <div class="container">
+        <div class="confirm_data">
+            Проверьте и подтвердите отправку данных
+        </div>
+        <div style="max-height: 550px; overflow: auto;">
+            <table class="table_dark">
+                <tr>
+                    <th>№</th>
+                    <th>Аптека</th>
+                    <th>План</th>
+                </tr>
+                
+                <%items.forEach((item, i) => {%>
+                    <tr>
+                        <td><%=++i%></td>
+                        <td>
+                            <%=item.ap.short_name%>
+                            
+                        </td>
+                        <td><%=item.plan%></td>
+                    
+                    </tr>
+                <%})%>
+                
+            </table>
+        </div>
+        <form action="/plan/uloadPlan" method="post">
+            <input type="hidden" name="items" value="<%=itemsJSON%>">
+            <input type="hidden" name="filename" value="<%=filename%>">
+            <button class="btn_center">Подтвердить</button>
+        </form>
+
+        <form action="/plan/uloadRefuse" method="post">
+            <input type="hidden" name="filename" value="<%=filename%>">
+            <button class="btn_center_red btn_center">Отменить</button>
+        </form>
+               
+
+        
+    </div>
+
+
+
+<%- include('./blocks/footer.ejs')%>

@@ -1,0 +1,17 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+<div class="content">
+    <div class="container">
+        <%for(let i = 0; i < 200000; i++) {%>
+            
+                <div>
+                    <strong><%=i%></strong>
+                    <strong><%=i*10%></strong>
+                </div>
+        <%}%>
+    </div>
+</div>
+
+
+<%- include('./blocks/footer.ejs')%>

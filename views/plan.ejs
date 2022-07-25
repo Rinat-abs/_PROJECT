@@ -1,0 +1,67 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+
+
+
+    <div class="container">
+        <%
+            if( error.length > 0)
+            {
+                %>
+                    <div    class="modal" id="modal">
+                        <div class="modal__content">
+                            <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="18" alt=""></button>
+                
+                            <h1 class="modal__title">Возникла ошибка</h1>
+                            <p class="modal__description"> <%-error%>   
+                            </p>
+                        </div>
+                    </div>
+                    <script src="/js/modal.js"></script>    
+                <%
+            }
+        %> 
+        <ul class="admin__menu__items">
+            <li class="admin__menu__item">
+                
+                <a href="/plan/current_month">
+                    План текущего месяца
+                </a>
+            </li>
+     
+            <li class="admin__menu__item">
+                <a href="/plan/current_month_fact">
+                    Просмотреть "Факт продаж" 
+                </a>
+            </li>
+            <li class="admin__menu__item">
+                <a href="/plan/bonus_part_one">
+                    Расчет первая часть
+                </a>
+            </li>
+
+            <li class="admin__menu__item">
+                <a href="/plan/bonus_part_two">
+                    Расчет вторая часть
+                </a>
+            </li>
+         
+            <li class="admin__menu__item">
+                <a href="/plan/pharmacies">
+                    Аптеки
+                </a>
+            </li>
+            <li class="admin__menu__item">
+                <a href="/plan/pharmacy_categories">
+                    Категории аптек 
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    
+
+
+
+<%- include('./blocks/footer.ejs')%>

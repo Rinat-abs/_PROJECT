@@ -1,0 +1,101 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+ 
+
+    <div class="container">
+        <a class="btn_left" href="/plan" style="width: 70px; text-align: center; margin-left: 20px;  color: #fff;">
+            Назад
+        </a>
+        
+        <%if(!items.length) {%>
+            <div class="error">
+                Здесь пока пусто
+            </div>
+        <%} else {%>
+
+            <div class="confirm_data">
+               Категории аптек
+            </div>
+            <br>
+
+            <div  style="max-height: 550px; overflow: auto;">
+                <table class="table_dark">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Объем выручки</th>
+                            <th>Достижение плана</th>
+                            <th>Достижение Сангигиена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%items.forEach((item, i) => {%>
+                            <tr class="search__item">
+                                <td><%=item.category%></td>
+                                <td class="table__revenue">
+                                  
+                                    <span class="price"> <%=item.revenue%></span>
+                                    <input type="hidden" value="<%=item.revenue%>" name="revenue" class="input_no_arrows" required>
+                                    <button class="btn_small_table save_price hidden" data-id="<%=item.id%>" data-revenue="<%=item.revenue%>">&#10004;</button>
+                                    <img src="/img/edit.png" alt="Редактировать" class="table__price__img">
+
+                                </td>
+                                <td class="table__price">
+                                  
+                                    <span class="price"> <%=item.money%></span>
+                                    <input type="hidden" value="<%=item.money%>" name="money" class="input_no_arrows" required>
+                                    <button class="btn_small_table save_price hidden" data-id="<%=item.id%>" data-money="<%=item.money%>">&#10004;</button>
+                                    <img src="/img/edit.png" alt="Редактировать" class="table__price__img">
+                                    
+                              
+                                    
+                                </td>
+
+                                <td class="table__hygiene">
+                                  
+                                    <span class="price"> <%=item.money_hygiene%></span>
+                                    <input type="hidden" value="<%=item.money_hygiene%>" name="money_hygiene" class="input_no_arrows" required>
+                                    <button class="btn_small_table save_price hidden" data-id="<%=item.id%>" data-money_hygiene="<%=item.money_hygiene%>">&#10004;</button>
+                                    <img src="/img/edit.png" alt="Редактировать" class="table__price__img">
+                                    
+                              
+                                    
+                                </td>
+                            
+                            </tr>
+                        <%})%>
+                    </tbody>
+        
+                   
+                    
+                </table>
+            </div>
+        <%}%>
+        
+
+               
+
+        
+    </div>
+
+    <%
+    if( error.length > 0)
+    {
+        %>
+        
+            <div class="small_fadeout_block small_fadeout_block_error animate__animated animate__backInDown">
+                <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="14" alt=""></button>
+                <h3>Ошибка</h3>
+                <p><%-error%> </p>
+            </div>
+            <script src="/js/smallWindow.js"></script>  
+        <%
+    }
+    %> 
+
+
+    <script src="/js/editMoney.js"></script>
+    <script src="/js/editMoneyHygiene.js"></script>
+    <script src="/js/editRevenue.js"></script>
+
+<%- include('./blocks/footer.ejs')%>

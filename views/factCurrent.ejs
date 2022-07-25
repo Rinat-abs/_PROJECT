@@ -1,0 +1,76 @@
+<%- include('./blocks/head.ejs')%>
+<%- include('./blocks/navbar.ejs')%>
+
+
+    <div class="container">
+        <a class="btn_left" href="/plan" style="width: 70px; text-align: center; margin-left: 20px;  color: #fff;">
+            Назад
+        </a>
+        
+        <form action="/plan/fact_upload" method="post" >
+            <button class="btn_left btn_left_green" type="submit"  style="width: 180px; text-align: center; margin-left: 20px;  color: #fff;">
+                Обновить (<%=date_file%>)
+            </button>
+        </form>
+       
+        <%if(!facts.length) {%>
+            <div class="error">
+                "Факт продаж" не загружен
+            </div>
+        <%} else {%>
+
+           
+            <div class="confirm_data">
+                Факт продаж за текущий месяц
+            </div>
+            <div style="max-height: 550px; overflow: auto; margin-top: 25px;">
+
+            
+                <table class="table_dark">
+                    <tr>
+                        <th>№</th>
+                        <th>Аптека</th>
+                        <th>Всего продано</th>
+                        <th>Всего продано Сангигиена</th>
+                    </tr>
+        
+                    <%facts.forEach((fact, i) => {%>
+                        <tr>
+                            <td><%=++i%></td>
+                            <td>
+                                <%=fact.short_name%>
+                                
+                            </td>
+                            <td ><%=fact.fact%></td>
+                            <td ><%=fact.hygieneFact%></td>
+                        
+                        </tr>
+                    <%})%>
+                    
+                </table>
+            </div>
+        <%}%>
+        
+
+               
+
+        
+    </div>
+
+<%
+if( success.length > 0)
+{
+    %>
+        <div class="small_fadeout_block  animate__animated animate__backInDown">
+            <button class="modal__close-button" id="modal__close-button"><img src="/img/close.svg" width="14" alt=""></button>
+            <h3>Обновлено</h3>
+            <p><%-success%> </p>
+        </div>
+        <script src="/js/smallWindow.js"></script>  
+    <%
+}
+%> 
+
+
+
+<%- include('./blocks/footer.ejs')%>

@@ -1,0 +1,20 @@
+<%- include('./blocks/head.ejs')%>
+
+
+
+<form action="auth" class="ui-form" method="post">
+    
+    <%if (error){%>
+        <p style="text-align: center; color: crimson; font-size: 22px;"><%=error%></p>
+    <%}%>
+
+    <h3>Войти на сайт</h3>
+    <div class="form-row">
+    <input type="text" id="login" required autocomplete="off" name="login"><label for="login">Логин</label>
+    </div>
+    <div class="form-row">
+    <input type="password" id="password" required autocomplete="off" name="password"><label for="password">Пароль</label>
+    </div>
+    <p><input type="submit" value="Войти"></p>
+</form>
+<%- include('./blocks/footer.ejs')%>
